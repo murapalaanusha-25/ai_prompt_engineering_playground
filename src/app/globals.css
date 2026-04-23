@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design tokens ─────────────────────────────────────── */
+:root {
+  /* Backgrounds */
+  --bg:          #F8F5F0;
+  --bg-card:     #FFFFFF;
+  --bg-sunken:   #F0EBE3;
+  --bg-nav:      #FEFCF9;
+
+  /* Borders */
+  --border:      #E3D9CE;
+  --border-soft: #EBE4DA;
+
+  /* Text */
+  --text:        #1E1711;
+  --text-2:      #6B5A46;
+  --text-3:      #A89880;
+
+  /* Brand */
+  --accent:        #B85C2A;
+  --accent-hover:  #9E4D22;
+  --accent-light:  #FBF0E8;
+  --accent-border: #E8C4A0;
+  --accent-ring:   rgba(184, 92, 42, 0.16);
+
+  /* Semantic */
+  --green:         #2D7A55;
+  --green-light:   #E6F4ED;
+  --green-border:  #A8D8C0;
+  --red:           #C0392B;
+  --red-light:     #FFF0EE;
+  --red-border:    #F5C6C2;
+
+  /* Elevation */
+  --shadow-xs: 0 1px 2px rgba(30, 23, 17, 0.05);
+  --shadow-sm: 0 1px 4px rgba(30, 23, 17, 0.07), 0 1px 2px rgba(30, 23, 17, 0.04);
+  --shadow:    0 2px 10px rgba(30, 23, 17, 0.09), 0 1px 3px rgba(30, 23, 17, 0.05);
+  --shadow-md: 0 6px 24px rgba(30, 23, 17, 0.11), 0 2px 6px rgba(30, 23, 17, 0.06);
+  --shadow-lg: 0 12px 40px rgba(30, 23, 17, 0.13), 0 4px 12px rgba(30, 23, 17, 0.07);
+
+  /* Misc */
+  --radius: 10px;
+  --radius-lg: 14px;
+}
+
+/* ── Reset ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 5px; height: 5px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: var(--border); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-3); }
+
+/* ── Form elements ─────────────────────────────────────── */
+input, textarea, select { font-family: inherit; }
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px var(--accent-ring) !important;
+}
+
+/* ── Keyframes ─────────────────────────────────────────── */
+@keyframes pl-spin  { to { transform: rotate(360deg); } }
+@keyframes pl-pulse { 0%, 100% { opacity: .65 } 50% { opacity: .25 } }
+@keyframes pl-rise  { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pl-fade  { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── Utility animation classes ─────────────────────────── */
+.pl-spin  { animation: pl-spin  .65s linear infinite; }
+.pl-pulse { animation: pl-pulse 1.5s ease-in-out infinite; }
+.pl-rise  { animation: pl-rise  .28s cubic-bezier(.2,.8,.4,1) forwards; }
+
+.pl-bar { transition: width 1s cubic-bezier(.4, 0, .2, 1); }
+
+/* ── Component helpers ─────────────────────────────────── */
+.pl-nav {
+  border-radius: 8px;
+  transition: background .13s, color .13s;
+}
+.pl-nav:hover {
+  background: var(--bg-sunken) !important;
+  color: var(--text) !important;
+}
+
+.pl-card {
+  transition: box-shadow .2s ease;
+}
+.pl-card:hover {
+  box-shadow: var(--shadow-md) !important;
+}
+
+.pl-model {
+  cursor: pointer;
+  transition: box-shadow .15s, border-color .15s, background .15s;
+}
+.pl-model:hover {
+  box-shadow: var(--shadow-sm) !important;
+}
+
+.pl-primary {
+  transition: filter .15s, transform .13s, box-shadow .15s;
+}
+.pl-primary:hover:not(:disabled) {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+  box-shadow: 0 5px 16px rgba(184, 92, 42, 0.32) !important;
+}
+.pl-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+.pl-primary:disabled {
+  opacity: .42;
+  cursor: not-allowed;
+}
+
+.pl-ghost {
+  transition: background .13s, border-color .13s;
+}
+.pl-ghost:hover {
+  background: var(--bg-sunken) !important;
+  border-color: var(--border) !important;
+}
