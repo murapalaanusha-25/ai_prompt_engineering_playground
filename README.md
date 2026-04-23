@@ -29,9 +29,4 @@ Works immediately with built-in mock responses — no API key needed.
 | Mixtral 8x7B | Mistral AI | `mistralai/mixtral-8x7b-instruct:free` |
 | Phi-3 Mini | Microsoft | `microsoft/phi-3-mini-128k-instruct:free` |
 
-## Deploy to Vercel
 
-```bash
-npx vercel --prod
-# Add OPENROUTER_API_KEY in Vercel dashboard → Settings → Environment Variables
-```
